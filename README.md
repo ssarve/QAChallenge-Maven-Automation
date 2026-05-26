@@ -27,54 +27,61 @@ The original assignment is an Xcode project and cannot be natively executed in E
 - Checkout mandatory field validation
 - Valid checkout confirmation and cart clearing
 
-## How to Import in Eclipse
-
-1. Extract the ZIP file.
-2. Open Eclipse.
-3. Go to `File > Import`.
-4. Select `Maven > Existing Maven Projects`.
-5. Click `Next`.
-6. Browse and select the extracted `QAChallenge_Maven_Eclipse` folder.
-7. Ensure `pom.xml` is selected.
-8. Click `Finish`.
-9. Wait for Maven dependencies to download.
-
-## How to Run Tests in Eclipse
-
-Option 1:
-
-1. Right-click the project.
-2. Select `Run As > Maven test`.
-
-Option 2:
-
-1. Open any test class under `src/test/java`.
-2. Right-click inside the class.
-3. Select `Run As > JUnit Test`.
-
-## How to Run from Command Line
-
-```bash
-mvn clean test
-```
-
 ## Important Note
 
 The original assignment specifically asks for XCTest/XCUITest on macOS/Xcode. This Maven project is a converted QA solution for Eclipse and validates the same core functional requirements at service/business-logic level.
 
+## High-Level Architecture
+The framework structure looks like this:
+QAChallenge_Maven_Eclipse_Solution
+│
+├── pom.xml
+├── src
+│   └── test
+│       └── java
+│           └── tests
+│               ├── LoginTest.java
+│               ├── CartTest.java
+│               ├── PromoCodeTest.java
+│               └── CheckoutTest.java
+│
+├── target
+│   └── extent-reports
+│       └── QAChallengeAutomationReport.html
+
+## Framework Layering
+Layer 1 — Test Layer
+Contains:
+Test classes
+Examples:
+•	LoginTest
+•	CartTest
+________________________________________
+Layer 2 — Business Logic Layer
+Contains:
+Validation logic
+Examples:
+•	Discount calculation
+•	Cart total
+•	Authentication rules
+________________________________________
+Layer 3 — Reporting Layer
+Contains:
+ExtentReports
+________________________________________
+Layer 4 — Build Layer
+Contains:
+Maven
 
 ## HTML Reporting Added
 
-This project now includes ExtentReports integration for a professional HTML execution report.
+This project includes ExtentReports integration for a professional HTML execution report.
 
 ### Run tests and generate Extent Report
 
 ```bash
 mvn clean test
 ```
-
-After execution, open this file in any browser:
-
 ```text
 target/extent-reports/QAChallengeAutomationReport.html
 ```
@@ -90,12 +97,3 @@ Then open:
 ```text
 target/site/surefire-report.html
 ```
-
-### Eclipse steps
-
-1. Right click the project.
-2. Select `Maven > Update Project`.
-3. Right click the project again.
-4. Select `Run As > Maven test`.
-5. Refresh the project.
-6. Open `target/extent-reports/QAChallengeAutomationReport.html`.
